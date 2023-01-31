@@ -4,14 +4,21 @@ if ! [ -d ".git" ]; then
     exit
 fi
 
+if [ ! -x "$(command -v git)" ]; then
+    echo "(!) git doesn't exist."
+    exit
+fi
+
 if [ ! -x "$(command -v firejail)" ]; then
     echo "(!) Firejail doesn't exist."
     exit
 fi
 
+echo "(!) Auto-install: Catbot Nav paths"
+firejail git clone --recursive https://github.com/explowz/catbot-database;cd catbot-database;sudo cp -R nav\ meshes/* ~/.steam/steam/steamapps/common/Team\ Fortress\ 2/tf/maps;sudo chmod 755 -R ~/.steam/steam/steamapps/common/Team\ Fortress\ 2/tf/maps;cd ..;sudo rm -r catbot-database
+
 echo "(!) Create directory for steam instances."
 mkdir -p user_instances
-sudo sed -i 's/^restricted-network yes/# restricted-network yes/g' /etc/firejail/firejail.config
 
 echo "(-) cathook-sandbox has installed successfully. Now all you need to do is"
 echo
