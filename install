@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+if ! [ -d ".git" ]; then
+    echo "(!) You should clone the repo before doing anything."
+    exit
+fi
+
+if [ ! -x "$(command -v firejail)" ]; then
+    echo "(!) Firejail doesn't exist."
+    exit
+fi
+
+echo "(!) Create directory for steam instances."
+mkdir -p user_instances
+sudo sed -i 's/^restricted-network yes/# restricted-network yes/g' /etc/firejail/firejail.config
+
+echo "(-) cathook-sandbox has installed successfully. Now all you need to do is"
+echo
+echo "(-) Start the process with ./start"
+echo
+echo "(?) Create a list of steam accounts, and save them to accounts.txt in username:password format."
