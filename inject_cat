@@ -1,9 +1,6 @@
-#!/bin/bash
-USER_INSTANCE=$(dirname $0)
-INTERFACE=$(ip route get 8.8.8.8 | awk -- '{printf $5}') 
-ACCOUNTS=`cat accounts.txt`  
+#!/bin/bash 
 if ! [ -d "./bin" ]; then
-	echo "(!) This script requires libcathook.so!"
+	echo "(!) This script requires libcathook.so, please put libcathook.so in your /bin folder!"
 	exit
 fi
 echo "(!) Injecting cathook into sandboxed TF2"
