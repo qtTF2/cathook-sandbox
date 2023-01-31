@@ -5,6 +5,8 @@ This repo is to prove that you can sandbox under linux. Firejail is the core fea
 - [x] Firejail scripts
 - [x] Bash scripts
 - [x] Steam launch in seperate user instance
+- [ ] Interact with console (cathook "text-mode" support)
+- [ ] Add slient mode (for steam and TF2)
 - [ ] Let steam automatically launch TF2
 - [ ] Make steam see TF2
 - [ ] Support multiple instances
