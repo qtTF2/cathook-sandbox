@@ -4,6 +4,7 @@ This repo is to prove that you can sandbox under linux. Firejail is the core fea
 ## to do list
 - [x] Firejail scripts
 - [x] Bash scripts
+- [x] "Network config scripts"
 - [x] Steam launch in seperate user instance
 - [ ] Interact with console (cathook "text-mode" support)
 - [ ] Add slient mode (for steam and TF2)
