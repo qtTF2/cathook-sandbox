@@ -4,4 +4,4 @@ if ! [ -d "./bin" ]; then
 	exit
 fi
 echo "(!) Injecting cathook into sandboxed TF2"
-firejail --join=b0 bash -c sudo ./attach
+firejail --join=b0 bash -c cd $USER_INSTANCE && sudo ./attach
