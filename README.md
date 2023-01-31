@@ -12,6 +12,7 @@ This repo is to prove that you can sandbox under linux. Firejail is the core fea
 - [ ] Add slient mode (for steam and TF2)
 - [ ] Let steam automatically launch TF2
 - [ ] Make steam see TF2
+- [ ] Automatically try to install catbot nav paths into sandbox enviroment
 - [ ] Support multiple instances
 - [ ] Try to inject cathook into the seperate TF2 instances
 - [ ] Add VAC disclaimer
