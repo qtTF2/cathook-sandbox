@@ -15,7 +15,7 @@ mkdir b0
 cd ..
 
 echo "(!) Launching sandboxed steam"
-firejail --dns=1.1.1.1 --noprofile --private=$USER_INSTANCE/user_instances/b0 --name=b0 --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0 --env=DISPLAY=:0.0 steam -noreactlogin -login
+firejail --dns=1.1.1.1 --private=$USER_INSTANCE/user_instances/b0 --name=b0 --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0 --env=DISPLAY=:0.0 steam -noreactlogin -login
 0 --env=DISPLAY=:0.0 steam -noreactlogin -login #todo: let user specify login details from file.
 
 #todo: add a way to steam see TF2
