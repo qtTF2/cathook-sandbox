@@ -6,6 +6,7 @@ This repo is to prove that you can sandbox under linux. Firejail is the core fea
 - [x] Bash scripts
 - [x] "Network config scripts"
 - [x] Steam launch in seperate user instance
+- [ ] If cathook crash restart TF2 automatically
 - [ ] Interact with console (cathook "text-mode" support)
 - [ ] Add slient mode (for steam and TF2)
 - [ ] Let steam automatically launch TF2
