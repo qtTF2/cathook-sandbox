@@ -1,8 +1,0 @@
-#!/bin/bash
-USER_INSTANCE=$(dirname $0)
-INTERFACE=$(ip route get 8.8.8.8 | awk -- '{printf $5}') 
-if ! [ -d "./user_instances" ]; then
-	echo "(!) You need to run install first."
-	exit
-fi
-firejail --net=none --noprofile --private=$USER_INSTANCE/user_instances/b0 steam --reset
