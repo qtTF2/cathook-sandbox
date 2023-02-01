@@ -6,4 +6,5 @@ steam_pass=$(cut -z accounts.txt -f2 -d ":" | tr '\0' '\r')
 loc=$(pwd)
 num=$(cat $loc/db/2.txt)
 echo num = $num
+echo true > $USER_INSTANCE/db/steam_alive-bot${i}.txt
 firejail --dns=1.1.1.1 --net=$INTERFACE --netns=catbotns${num} --noprofile --private=$USER_INSTANCE/user_instances/b${num} --name=b${num} --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=DISPLAY=:0.0 steam -noreactlogin -login $steam_user -password $steam_pass
