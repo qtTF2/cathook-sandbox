@@ -8,7 +8,8 @@ This script can be detected by VAC at any time. Use this script on alternative a
 - [x] Firejail scripts
 - [x] Bash scripts
 - [x] "Network config scripts"
-- [ ] Fix debian/ubuntu fuck you
+- [x] Fix permission not working
+- [ ] Fix debian/ubuntu fuck you (fix coming soon if i ever able to get a test vm under ubuntu)
 - [x] Steam launch in seperate user instance
 - [ ] If cathook crash restart TF2 automatically
 - [ ] Interact with console (cathook "text-mode" support)
