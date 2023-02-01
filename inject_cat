@@ -1,7 +1,0 @@
-#!/bin/bash 
-if ! [ -d "./bin" ]; then
-	echo "(!) This script requires libcathook.so, please put libcathook.so in your /bin folder!"
-	exit
-fi
-echo "(!) Injecting cathook into sandboxed TF2"
-firejail --join=b0 bash -c cd $USER_INSTANCE && sudo ./attach
