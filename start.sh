@@ -29,7 +29,7 @@ echo false > $USER_INSTANCE/db/tf2_alive-bot${i}.txt
 sudo $USER_INSTANCE/scripts/ns-inet ${i}
 #-nominidumps -nobreakpad -no-browser -nofriendsui
 #firejail --join=b0 echo test
-firejail --dns=1.1.1.1 --net=$INTERFACE --netns=catbotns${i} --noprofile --private=$USER_INSTANCE/user_instances/b${i} --name=b${i} --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=DISPLAY=:0.0 steam -noreactlogin -login $steam_user -password $steam_pass 
+firejail --dns=1.1.1.1 --net=$INTERFACE --netns=catbotns${i} --noprofile --private=$USER_INSTANCE/user_instances/b${i} --name=b${i} --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=DISPLAY=:0.0 steam -login $steam_user -password $steam_pass 
 #-silent -sw -w 640 -h 480 -novid -nojoy -noshaderapi -nomouse -nomessagebox -nominidumps -nohltv -nobreakpad -particles 512 -snoforceformat -softparticlesdefaultoff -threads 1
 #echo "(!) Starting TF2"
 #cd /home/qt/.local/share/Steam/steamapps/common/Team\ Fortress\ 2/ && firejail --join=b0 bash -c cd ~/.local/share/Steam/steamapps/common/Team\ Fortress\ 2 && LD_LIBRARY_PATH="$(~/".local/share/Steam/ubuntu12_32/steam-runtime/run.sh" printenv LD_LIBRARY_PATH):./bin" STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0 DISPLAY=:0.0 PULSE_SERVER="unix:/tmp/pulse.sock" ./hl2_linux -game tf -w 640 -h 480 -steam -secure -novid
