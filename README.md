@@ -14,7 +14,7 @@ This script can be detected by VAC at any time. Use this script on alternative a
 - [ ] Interact with console (cathook "text-mode" support)
 - [x] Add slient mode (for steam and TF2)
 - [ ] Let steam automatically launch TF2
-- [ ] Make steam see TF2
+- [x] Make steam see TF2
 - [x] Automatically try to install catbot nav paths into sandbox enviroment
 - [x] Support multiple instances
 - [ ] Try to inject cathook into the seperate TF2 instances
