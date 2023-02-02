@@ -46,6 +46,13 @@ firejail --dns=1.1.1.1 --net=$INTERFACE --netns=catbotns${i} --noprofile --priva
 firejail --dns=1.1.1.1 --net=$INTERFACE --netns=catbotns${i} --noprofile --private=./user_instances/b${i} --name=b${i} --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=DISPLAY=:0.0 pactl load-module module-virtual-source source_name=VirtualMic master=Source.monitor
 
 clear
+echo Cathook Sandbox
+echo ---------------
+echo "(!) Creating global steamapps..."
+sudo mkdir -p /opt/steamapps
+mountpoint -q /opt/steamapps || sudo mount --bind ~/.steam/steam/steamapps/ /opt/steamapps
+
+clear
 echo Cathook Sandbox: Initial Setup 1 / 2
 echo ------------------------------------
 echo "(!) Creating files for global symlink fix script..."
