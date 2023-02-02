@@ -5,8 +5,8 @@
 botid=$1
 
 NS="cathookns$botid"
-VETH="veth$botid"
-VPEER="vpeer$botid"
+VETH="veth2$botid"
+VPEER="vpeer2$botid"
 VETH_ADDR="16.200.$botid.1"
 VPEER_ADDR="16.200.$botid.2"
 INTERFACE=$(route -n | grep '^0\.0\.0\.0' | grep -o '[^ ]*$' | head -1)
