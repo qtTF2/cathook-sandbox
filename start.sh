@@ -13,24 +13,9 @@ fi
 sudo mkdir -p /opt/steamapps
 mountpoint -q /opt/steamapps || sudo mount --bind ~/.steam/steam/steamapps/ /opt/steamapps
 
-#use something better ;)
-:'clear
-echo Cathook Sandbox
-echo ---------------
-echo -n "(!) Please enter how many bots you like to start now: "
-read quota
-echo $quota > $loc/db/2.txt
-
-for ((i = 0; i < quota; ++i)); do
-echo
-echo "(!) Spawning ${i} steam instance(s)..."
-cd user_instances
-mkdir b${i}
-cd ..:'
-
 #magic :)
-if [ -e ${file} ]; then
-    count=$(cat ${file})
+if [ -e $loc/db/2.txt ]; then
+    count=$(cat $loc/db/2.txt)
 else
     count=0
 fi
@@ -39,14 +24,12 @@ fi
 
 echo ${count} > $loc/db/2.txt
 
-
-echo
 echo "(!) Fix steamapps not syncing properly"
 echo "(!) Ignore failed to create symbolic link error if it is your first time starting the script."
 sudo $loc/scripts/ns-inet ${count}
 firejail --dns=1.1.1.1 --net=$INTERFACE --netns=cathookns${count} --noprofile --private=$loc/user_instances/b${count} --name=b${count} --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=DISPLAY=$DISPLAY bash -c /opt/symlink.sh && echo symlink success && exit
 
-echo "multicat debugging"
+echo "sandbox debugging"
 echo "LOC: $loc"
 echo "ID: ${count}"
 echo "NETWORK SPACE: cathookns${count}"
@@ -55,13 +38,10 @@ echo "TF2 (isTF2?): cat $loc/db/tf2_alive-bot${count}.txt"
 echo "IPC: not_supported"
 
 
-echo yes > $loc/db/steam_alive-bot${count}.txt
+echo yes > $loc/db/steam_alive-cat${count}.txt
 echo no > $loc/db/tf2_alive-bot${count}.txt
 firejail --dns=1.1.1.1 --net=$INTERFACE --netns=cathookns${count} --noprofile --private=$loc/user_instances/b${count} --name=b${count} --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=DISPLAY=$DISPLAY steam -login $steam_user -password $steam_pass && firejail --join=b0 bash -c cd /home/$user/.local/share/Steam/steamapps/common/Team\ Fortress\ 2 && LD_LIBRARY_PATH="$(~/".local/share/Steam/ubuntu12_32/steam-runtime/run.sh" printenv LD_LIBRARY_PATH):./bin" DISPLAY=$DISPLAY PULSE_SERVER="unix:/tmp/pulse.sock" ./hl2_linux -game tf -w 640 -h 480 -steam -secure -novid
-#echo "(!) Starting TF2"
-#cd /home/qt/.local/share/Steam/steamapps/common/Team\ Fortress\ 2/ && firejail --join=b0 bash -c cd ~/.local/share/Steam/steamapps/common/Team\ Fortress\ 2 && LD_LIBRARY_PATH="$(~/".local/share/Steam/ubuntu12_32/steam-runtime/run.sh" printenv LD_LIBRARY_PATH):./bin" STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0 DISPLAY=:0.0 PULSE_SERVER="unix:/tmp/pulse.sock" ./hl2_linux -game tf -w 640 -h 480 -steam -secure -novid
-done
-echo $acc | cut -f1 -d " " 
-# remove file instead of keeping it
-rm -rf $loc/db/steam_alive-bot${count}.txt
-echo "(-) Goodbye."
+
+
+rm -rf $loc/db/steam_alive-cat${count}.txt
+echo "(-) Cathook Sandbox ${count} is now down."
