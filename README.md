@@ -1,5 +1,5 @@
-# Cathook under a sandbox
-This repo is to prove that you can sandbox under linux. Firejail is the core feature of catbots so why not replicate catbots but with TF2 GUI and shitty FPS?
+# Cathook multiboxed
+This repo is to prove that you can sandbox under linux. The singular purpose of this repo is you can now multibox with cathook. **DO NOT USE THIS IF YOU PLAN TO USE CAT BOTS!**
 
 # VAC Disclaimer
 This script can be detected by VAC at any time. Use this script on alternative accounts or bot accounts never on your main account.
@@ -9,12 +9,8 @@ This script can be detected by VAC at any time. Use this script on alternative a
 - [x] Bash scripts
 - [x] "Network config scripts"
 - [x] Fix permission not working
-- [ ] Fix debian/ubuntu fuck you (fix coming soon if i ever able to get a test vm under ubuntu)
+- [x] Fix debian/ubuntu fuck you (fix coming soon if i ever able to get a test vm under ubuntu)
 - [x] Steam launch in seperate user instance
-- [ ] If cathook crash restart TF2 automatically
-- [ ] Interact with console (cathook "text-mode" support)
-- [x] Add slient mode (for steam and TF2)
-- [ ] Let steam automatically launch TF2
 - [x] Make steam see TF2
 - [x] Automatically try to install catbot nav paths into sandbox enviroment
 - [x] Support multiple instances
