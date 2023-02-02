@@ -10,14 +10,11 @@ if ! [ -d "./user_instances" ]; then
 	echo "(!) You need to run install first."
 	exit
 fi
-clear
-echo Cathook Sandbox
-echo ---------------
-echo "(!) Creating global steamapps..."
 sudo mkdir -p /opt/steamapps
 mountpoint -q /opt/steamapps || sudo mount --bind ~/.steam/steam/steamapps/ /opt/steamapps
 
-clear
+#use something better ;)
+:'clear
 echo Cathook Sandbox
 echo ---------------
 echo -n "(!) Please enter how many bots you like to start now: "
@@ -29,29 +26,42 @@ echo
 echo "(!) Spawning ${i} steam instance(s)..."
 cd user_instances
 mkdir b${i}
-cd ..
+cd ..:'
+
+#magic :)
+if [ -e ${file} ]; then
+    count=$(cat ${file})
+else
+    count=0
+fi
+
+((count++))
+
+echo ${count} > $loc/db/2.txt
+
+
 echo
 echo "(!) Fix steamapps not syncing properly"
 echo "(!) Ignore failed to create symbolic link error if it is your first time starting the script."
-sudo $loc/scripts/ns-inet ${i}
-echo $USER_INSTANCE
-echo $loc
-firejail --dns=1.1.1.1 --net=$INTERFACE --netns=catbotns${i} --noprofile --private=$loc/user_instances/b${i} --name=b${i} --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=DISPLAY=$DISPLAY bash -c /opt/symlink.sh && echo symlink success && exit
+sudo $loc/scripts/ns-inet ${count}
+firejail --dns=1.1.1.1 --net=$INTERFACE --netns=cathookns${count} --noprofile --private=$loc/user_instances/b${count} --name=b${count} --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=DISPLAY=$DISPLAY bash -c /opt/symlink.sh && echo symlink success && exit
+
+echo "multicat debugging"
+echo "LOC: $loc"
+echo "ID: ${count}"
+echo "NETWORK SPACE: cathookns${count}"
+echo "STEAM (isSTEAM?): cat $loc/db/steam_alive-bot${count}.txt"
+echo "TF2 (isTF2?): cat $loc/db/tf2_alive-bot${count}.txt"
+echo "IPC: not_supported"
 
 
-echo yes > $loc/db/steam_alive-bot${i}.txt
-echo no > $loc/db/tf2_alive-bot${i}.txt
+echo yes > $loc/db/steam_alive-bot${count}.txt
+echo no > $loc/db/tf2_alive-bot${count}.txt
+firejail --dns=1.1.1.1 --net=$INTERFACE --netns=cathookns${count} --noprofile --private=$loc/user_instances/b${count} --name=b${count} --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=DISPLAY=$DISPLAY steam -login $steam_user -password $steam_pass && firejail --join=b0 bash -c cd /home/$user/.local/share/Steam/steamapps/common/Team\ Fortress\ 2 && LD_LIBRARY_PATH="$(~/".local/share/Steam/ubuntu12_32/steam-runtime/run.sh" printenv LD_LIBRARY_PATH):./bin" DISPLAY=$DISPLAY PULSE_SERVER="unix:/tmp/pulse.sock" ./hl2_linux -game tf -w 640 -h 480 -steam -secure -novid
 #echo "(!) Starting TF2"
-#firejail --dns=1.1.1.1 --net=$INTERFACE --netns=catbotns${i} --noprofile --private=$loc/user_instances/b${i} --name=b${i} --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=DISPLAY=:0.0 bash -c /home/$user/.local/share/Steam/ubuntu12_32/reaper SteamLaunch AppId=440 -- /home/$user/.local/share/Steam/ubuntu12_32/steam-launch-wrapper -- /home/$user/.local/share/Steam/steamapps/common/Team Fortress 2/hl2.sh -game tf -steam -secure -novid
-
-firejail --dns=1.1.1.1 --net=$INTERFACE --netns=catbotns${i} --noprofile --private=$loc/user_instances/b${i} --name=b${i} --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=DISPLAY=$DISPLAY steam -login $steam_user -password $steam_pass && firejail --join=b0 bash -c cd /home/$user/.local/share/Steam/steamapps/common/Team\ Fortress\ 2 && LD_LIBRARY_PATH="$(~/".local/share/Steam/ubuntu12_32/steam-runtime/run.sh" printenv LD_LIBRARY_PATH):./bin" DISPLAY=$DISPLAY PULSE_SERVER="unix:/tmp/pulse.sock" ./hl2_linux -game tf -w 640 -h 480 -steam -secure -novid
-
-#if you wish to have everything slient:
-#steam slient: -nominidumps -nobreakpad -no-browser -nofriendsui
-#tf2 slient: -silent -sw -w 640 -h 480 -novid -nojoy -noshaderapi -nomouse -nomessagebox -nominidumps -nohltv -nobreakpad -particles 512 -snoforceformat -softparticlesdefaultoff -threads 1
-
+#cd /home/qt/.local/share/Steam/steamapps/common/Team\ Fortress\ 2/ && firejail --join=b0 bash -c cd ~/.local/share/Steam/steamapps/common/Team\ Fortress\ 2 && LD_LIBRARY_PATH="$(~/".local/share/Steam/ubuntu12_32/steam-runtime/run.sh" printenv LD_LIBRARY_PATH):./bin" STEAM_RUNTIME_PREFER_HOST_LIBRARIES=0 DISPLAY=:0.0 PULSE_SERVER="unix:/tmp/pulse.sock" ./hl2_linux -game tf -w 640 -h 480 -steam -secure -novid
 done
 echo $acc | cut -f1 -d " " 
 # remove file instead of keeping it
-rm -rf $loc/db/steam_alive-bot${i}.txt
+rm -rf $loc/db/steam_alive-bot${count}.txt
 echo "(-) Goodbye."
