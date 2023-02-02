@@ -4,11 +4,11 @@
 
 botid=$1
 
-NS="catbotns$botid"
+NS="cathookns$botid"
 VETH="veth$botid"
 VPEER="vpeer$botid"
-VETH_ADDR="10.200.$botid.1"
-VPEER_ADDR="10.200.$botid.2"
+VETH_ADDR="16.200.$botid.1"
+VPEER_ADDR="16.200.$botid.2"
 INTERFACE=$(route -n | grep '^0\.0\.0\.0' | grep -o '[^ ]*$' | head -1)
 
 if [[ $EUID -ne 0 ]]; then
