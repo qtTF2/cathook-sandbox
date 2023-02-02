@@ -13,6 +13,14 @@ fi
 sudo mkdir -p /opt/steamapps
 mountpoint -q /opt/steamapps || sudo mount --bind ~/.steam/steam/steamapps/ /opt/steamapps
 
+if [ -x "$(command -v pulseaudio)" ]; then
+    echo "(!) Setting up Pulseaudio socket"
+    pulse=$(pgrep -u "$USER" pulseaudio);
+    ([ ! -z "$pulse" ]) && pulseaudio --start &>/dev/null &
+    pactl load-module module-native-protocol-unix auth-anonymous=1 socket=/tmp/pulse.sock > /tmp/pulsemodule.id
+fi
+
+
 #magic :)
 if [ -e $loc/db/2.txt ]; then
     count=$(cat $loc/db/2.txt)
