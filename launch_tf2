@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+#        DO THIS IF YOU ARE
+#             VERY LAZY
+#
+#/s
+loc=$(pwd)
+user="$USER"
+DISPLAY=$(echo $DISPLAY)
+get=$(cat $loc/db/2.txt)
+if ! [ -d "./user_instances" ]; then
+	echo "(!) You need to run install first."
+	exit
+fi
+
+echo "(!) Launching TF2 (for $get instances)"
+cd ~/.local/share/Steam/steamapps/common/Team\ Fortress\ 2
+echo "./hl2_linux -game tf -w 640 -h 480 -steam -secure -novid" > /opt/steamapps/common//Team\ Fortress\ 2/run.sh
+sudo chmod 777 /opt/steamapps/common//Team\ Fortress\ 2/run.sh
+firejail --env=LD_LIBRARY_PATH="$(~/".local/share/Steam/ubuntu12_32/steam-runtime/run.sh" printenv LD_LIBRARY_PATH):./bin" --env=DISPLAY=$DISPLAY --env=PULSE_SERVER="unix:/tmp/pulse.sock" --join=b$get bash -c ./run.sh
