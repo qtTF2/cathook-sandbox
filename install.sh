@@ -36,13 +36,6 @@ done
 clear
 echo Cathook Sandbox: Initial Setup 1 / 2
 echo ------------------------------------
-echo "(!) Fixing firejail audio errors..."
-echo "(!) This requires you to log off and log on after the fix is implemented!"
-firecfg --fix-sound
-
-clear
-echo Cathook Sandbox: Initial Setup 1 / 2
-echo ------------------------------------
 echo "(!) Creating audio source for mic spamming (${i} instance(s))..."
 firejail --dns=1.1.1.1 --net=$INTERFACE --netns=cathookns${i} --noprofile --private=./user_instances/b${i} --name=b${i} --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=DISPLAY=:0.0 pactl load-module module-null-sink sink_name=Source
 firejail --dns=1.1.1.1 --net=$INTERFACE --netns=cathookns${i} --noprofile --private=./user_instances/b${i} --name=b${i} --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=DISPLAY=:0.0 pactl load-module module-virtual-source source_name=VirtualMic master=Source.monitor
@@ -74,7 +67,6 @@ clear
 echo Cathook Sandbox: Initial Setup 2 / 2
 echo -------------------------------------
 echo "(!) You can start steam to test your config or anything before starting the instances. Do not start TF2 or steam during when your instances are running."
-echo "(!) You need to log off from your current user and log on back due to firejail applied the sound fix."
 echo
 echo "(?) All you need to do is now ./start.sh!"
 echo "(?) Create a list of steam accounts, and save them to accounts.txt in username:password format."
