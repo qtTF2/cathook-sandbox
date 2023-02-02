@@ -36,13 +36,6 @@ done
 clear
 echo Cathook Sandbox: Initial Setup 1 / 2
 echo ------------------------------------
-echo "(!) Creating audio source for mic spamming (${i} instance(s))..."
-firejail --dns=1.1.1.1 --net=$INTERFACE --netns=cathookns${i} --noprofile --private=./user_instances/b${i} --name=b${i} --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=DISPLAY=:0.0 pactl load-module module-null-sink sink_name=Source
-firejail --dns=1.1.1.1 --net=$INTERFACE --netns=cathookns${i} --noprofile --private=./user_instances/b${i} --name=b${i} --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=DISPLAY=:0.0 pactl load-module module-virtual-source source_name=VirtualMic master=Source.monitor
-
-clear
-echo Cathook Sandbox: Initial Setup 1 / 2
-echo ------------------------------------
 echo "(!) Creating files for global symlink fix script..."
 echo "ln -s /opt/steamapps/ /home/$USER/.local/share/Steam/" > $loc/symlink.sh
 sudo mv $loc/symlink.sh /opt/symlink.sh
