@@ -48,4 +48,5 @@ sudo $loc/scripts/ns-delete ${count}
 rm -rf $loc/db/steam_alive-cat${count}.txt
 to_rem=$(cat $loc/db/2.txt)
 ((to_rem--))
+echo to_rem > $loc/db/2.txt
 echo "(-) Cathook Sandbox ${to_rem} is now down."
