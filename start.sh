@@ -17,11 +17,11 @@ mountpoint -q /opt/steamapps || sudo mount --bind ~/.steam/steam/steamapps/ /opt
 if [ -e $loc/db/2.txt ]; then
     count=$(cat $loc/db/2.txt)
 else
-    count=0
+    count=-1
 fi
 
-((count++))
 
+((count++))
 echo ${count} > $loc/db/2.txt
 
 echo "(!) Fix steamapps not syncing properly"
@@ -44,9 +44,9 @@ firejail --dns=1.1.1.1 --net=$INTERFACE --netns=cathookns${count} --noprofile --
 
 
 #keep track of sandbox and if down remove any trace.
-sudo $loc/scripts/ns-delete ${count}
-rm -rf $loc/db/steam_alive-cat${count}.txt
 to_rem=$(cat $loc/db/2.txt)
 ((to_rem--))
-echo to_rem > $loc/db/2.txt
-echo "(-) Cathook Sandbox ${to_rem} is now down."
+echo $to_rem > $loc/db/2.txt 
+sudo $loc/scripts/ns-delete ${count}
+rm -rf $loc/db/steam_alive-cat${count}.txt
+echo "(-) Cathook Sandbox ${count} is now down."
