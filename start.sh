@@ -10,7 +10,14 @@ if ! [ -d "./user_instances" ]; then
 	echo "(!) You need to run install first."
 	exit
 fi
- clear
+clear
+echo Cathook Sandbox
+echo ---------------
+echo "(!) Creating global steamapps..."
+sudo mkdir -p /opt/steamapps
+mountpoint -q /opt/steamapps || sudo mount --bind ~/.steam/steam/steamapps/ /opt/steamapps
+
+clear
 echo Cathook Sandbox
 echo ---------------
 echo -n "(!) Please enter how many bots you like to start now: "
