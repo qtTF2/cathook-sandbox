@@ -43,5 +43,9 @@ echo no > $loc/db/tf2_alive-bot${count}.txt
 firejail --dns=1.1.1.1 --net=$INTERFACE --netns=cathookns${count} --noprofile --private=$loc/user_instances/b${count} --name=b${count} --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=DISPLAY=$DISPLAY steam -login $steam_user -password $steam_pass && firejail --join=b0 bash -c cd /home/$user/.local/share/Steam/steamapps/common/Team\ Fortress\ 2 && LD_LIBRARY_PATH="$(~/".local/share/Steam/ubuntu12_32/steam-runtime/run.sh" printenv LD_LIBRARY_PATH):./bin" DISPLAY=$DISPLAY PULSE_SERVER="unix:/tmp/pulse.sock" ./hl2_linux -game tf -w 640 -h 480 -steam -secure -novid
 
 
+#keep track of sandbox and if down remove any trace.
+sudo $loc/scripts/ns-delete ${count}
 rm -rf $loc/db/steam_alive-cat${count}.txt
-echo "(-) Cathook Sandbox ${count} is now down."
+to_rem=$(cat $loc/db/2.txt)
+((to_rem--))
+echo "(-) Cathook Sandbox ${to_rem} is now down."
