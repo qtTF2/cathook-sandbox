@@ -12,6 +12,7 @@ RUNCMD="sudo -u $RUNUSER"
 $RUNCMD bash ./scripts/updater true
 $RUNCMD bash ./report-crash true
 
+loc=$(pwd)
 count=$(cat $loc/db/2.txt)
 line=$(pgrep -u $RUNUSER hl2_linux)
 arr=($line)
