@@ -1,5 +1,5 @@
 # Cathook multiboxed
-This repo is to prove that you can sandbox under linux. The singular purpose of this repo is you can now multibox with cathook.
+This repo is to prove that you can sandbox under linux. The singular purpose of this repo is you can now multibox with cathook. [Discord Server](https://discord.gg/FB6YuUvQQA)
 
 # VAC Disclaimer
 This script can be detected by VAC at any time. Use this script on alternative accounts or bot accounts never on your main account.
