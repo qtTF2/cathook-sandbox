@@ -42,11 +42,12 @@ sudo $loc/scripts/ns-inet ${count}
 firejail --dns=1.1.1.1 --net=$INTERFACE --netns=cathookns${count} --noprofile --private=$loc/user_instances/b${count} --name=b${count} --env=PULSE_SERVER=unix:/tmp/pulse.sock --env=DISPLAY=$DISPLAY bash -c /opt/symlink.sh && echo symlink success && exit
 
 echo "sandbox debugging"
+echo "useful for reporting bugs or issues"
 echo "LOC: $loc"
 echo "ID: ${count}"
 echo "NETWORK SPACE: cathookns${count}"
-echo "STEAM (isSTEAM?): cat $loc/db/steam_alive-bot${count}.txt"
-echo "TF2 (isTF2?): cat $loc/db/tf2_alive-bot${count}.txt"
+echo "STEAM (isSTEAM?): $(cat $loc/db/steam_alive-bot${count}.txt)"
+echo "TF2 (isTF2?): $(cat $loc/db/tf2_alive-bot${count}.txt)"
 echo "IPC: not_supported"
 
 
