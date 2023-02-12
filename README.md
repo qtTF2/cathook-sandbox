@@ -6,10 +6,10 @@ This script can be detected by VAC at any time. Use this script on alternative a
 
 ## to do list
 - [x] Fix permission not working
-- [ ] Fix debian/ubuntu fuck you (fix coming soon if i ever able to get a test vm under ubuntu)
+- [x] Fix steam path difference on ubuntu, debian distros
 - [x] Steam launch in seperate user instance
 - [x] Make steam see TF2
 - [x] Automatically try to install catbot nav paths into sandbox enviroment
 - [x] Support multiple instances
-- [ ] Try to inject cathook into the seperate TF2 instances
+- [x] Try to inject cathook into the seperate TF2 instances
 - [x] Add VAC disclaimer
