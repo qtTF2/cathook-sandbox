@@ -72,7 +72,7 @@ clear
 echo Cathook Sandbox: Initial Setup 1 / 2
 echo ------------------------------------
 echo "(!) Creating files for global symlink fix script..."
-echo "ln -s /opt/steamapps/ $STEAM_PATH" > $loc/symlink.sh
+echo "cd $STEAM_PATH; rm -rf $STEAM_PATH/steamapps; ln -s /opt/steamapps/ $STEAM_PATH" > $loc/symlink.sh
 sudo mv $loc/symlink.sh /opt/symlink.sh
 sudo chmod 777 /opt/symlink.sh
 
