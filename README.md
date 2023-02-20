@@ -1,2 +1,3 @@
-# ⚠️⚠️⚠️ PLEASE DO NOT USE ⚠️⚠️⚠️
-There is a patch coming out which fixes injector, and internet problems.
+## final to dos
+- [x] Fix internet problems with sandbox (if you are on ubuntu `sudo apt install net-tools`)
+- [ ] Finish cathook multibox injector
