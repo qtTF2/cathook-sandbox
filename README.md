@@ -11,7 +11,7 @@ This script can be detected by VAC at any time. Use this script on alternative a
 
 **Bintr (explowz)** - tf2 start parameters
 
-**UndefindedUser25** - symlink permission fix
+**UndefindedUser25 (Nerbura)** - symlink permission fix
 
 **LWSS** - inject (attach) method
 
