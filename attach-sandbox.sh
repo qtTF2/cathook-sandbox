@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#original script credits
+# original script credits
 # Thank you LWSS
 # https://github.com/LWSS/Fuzion/commit/a53b6c634cde0ed47b08dd587ba40a3806adf3fe
 clear # better output jesus fucking christ
