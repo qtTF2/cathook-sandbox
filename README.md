@@ -7,13 +7,13 @@ This repo is to prove that you can sandbox under linux. The singular purpose of 
 This script can be detected by VAC at any time. Use this script on alternative accounts or bot accounts never on your main account.
 
 # Credits
-**nullworks** - catbot networking scripts, start parameter and firejail scripts, attach scripts
+[**nullworks**](https://github.com/nullworks) - catbot networking scripts, start parameter and firejail scripts, attach scripts
 
-**Bintr (explowz)** - tf2 start parameters
+[**Bintr (explowz)**](https://github.com/explowz) - tf2 start parameters
 
-**UndefindedUser25** - symlink permission fix
+[**Nerbura**](https://github.com/UndefindedUser25) - symlink permission fix
 
-**LWSS** - inject (attach) method
+[**LWSS**](https://github.com/LWSS) - inject (attach) method
 
 ## to do list
 to do list completed on 2023 February ~~12~~ 21

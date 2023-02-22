@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#original script credits
+# original script credits
 # Thank you LWSS
 # https://github.com/LWSS/Fuzion/commit/a53b6c634cde0ed47b08dd587ba40a3806adf3fe
 clear # better output jesus fucking christ
@@ -18,14 +18,10 @@ arr=($line)
 if [ $# == 1 ]; then
     proc=$1
 else
-
-
     if [ ${#arr[@]} == 0 ]; then
         echo -e "[\033[1;31mERROR\033[0m] TF2 is not running."
         exit
     fi
-
-
 
     if [ ${#arr[@]} == 1 ]; then
         echo -e "[\033[0;32mOK\033[0m] Skipping choice. There is only one TF2 instance to inject cathook into."
@@ -44,9 +40,7 @@ else
         fi
     fi
     
-    fi
-
-    
+    fi 
 
 echo -e "[\033[1;33mWAIT\033[0m] Attaching \033[1;34mcathook\033[0m to \033[1;34m$proc\033[0m"
 
